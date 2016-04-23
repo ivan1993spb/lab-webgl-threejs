@@ -1,0 +1,20 @@
+{
+  "name": "lab-webgl-threejs",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Ivan Pushkin <pushkin13@bk.ru>"
+  ],
+  "license": "BSD-2-Clause",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "three.js": "^0.75.0"
+  }
+}
