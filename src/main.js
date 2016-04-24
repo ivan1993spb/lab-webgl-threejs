@@ -1,53 +1,75 @@
 
 var THREE = require("three.js")
-var monkey = require('json!./monkey.json');
-
-var scene = new THREE.Scene();
 
 
 var loader = new THREE.JSONLoader();
 
-var obj = loader.parse(
-    monkey,
-    null
-);
+var boxData = loader.parse(require('json!./box.json'), null);
+var tableData = loader.parse(require('json!./table.json'), null);
+var coverData = loader.parse(require('json!./cover.json'), null);
 
 
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+var scene = new THREE.Scene();
 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
 
-// var geometry = new THREE.BoxGeometry( 2, 1, 1 );
-var geometry = obj.geometry;
-// var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-var material = new THREE.MeshPhongMaterial({
-  color: 0x0000ff
+var materialBox = new THREE.MeshPhongMaterial({
+    color: 0x0000ff
 });
-// var material = new THREE.MeshNormalMaterial();
 
-var cube = new THREE.Mesh( geometry, material );
+var box = new THREE.Mesh( boxData.geometry, materialBox );
+scene.add( box );
+
+
+
+var materialTable = new THREE.MeshPhongMaterial({
+    color: 0xff0000
+});
+
+var table = new THREE.Mesh( tableData.geometry, materialTable );
+scene.add( table );
+
+
+
+var materialCover = new THREE.MeshPhongMaterial({
+    color: 0x00ff00
+});
+
+var cover = new THREE.Mesh( coverData.geometry, materialCover );
+scene.add( cover );
+
 
 
 var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
 hemiLight.color.setHSL( 0.6, 1, 0.6 );
 hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
-hemiLight.position.set( 0, 500, 0 );
+hemiLight.position.set( 0, 100, -25 );
 scene.add( hemiLight );
 
+// --------------------------------
+
+// var camera = new THREE.OrthographicCamera(
+    // window.innerWidth / - 2, window.innerWidth / 2,
+    // window.innerHeight / 2, window.innerHeight / - 2, 1, 1000 );
+
+var camera = new THREE.PerspectiveCamera(
+    55, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+camera.position.z = -3.2;
+camera.position.y = 4;
+camera.position.x = 3.6;
+camera.rotation.set(-2.3, 0.5, 0.5, "XYZ");
 
 
+console.log(camera);
 
-scene.add( cube );
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
 
-camera.position.z = 5;
 
 var render = function () {
-    requestAnimationFrame( render );
+    // requestAnimationFrame( render );
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
 
     renderer.render(scene, camera);
 };
