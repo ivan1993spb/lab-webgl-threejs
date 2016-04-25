@@ -5,7 +5,6 @@ var THREE = require("three.js");
 
 var loader = new THREE.JSONLoader();
 var scene = new THREE.Scene();
-var tgaTextureLoader = new THREE.TGALoader();
 var textureLoader = new THREE.TextureLoader();
 
 // --------------------------------
