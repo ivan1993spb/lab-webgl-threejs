@@ -18,5 +18,5 @@ gulp.task('build', function() {
 });
 
 gulp.task('watch', function (cb) {
-    gulp.watch(["src/*.js", "src/*.json"], ['build']);
+    gulp.watch(["src/*.js", "src/models/*.json"], ['build']);
 });
