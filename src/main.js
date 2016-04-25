@@ -47,13 +47,13 @@ scene.add( cover );
 
 var materialSphere1 = new THREE.MeshPhongMaterial({
     color: 0xffffff,
-    emissive: 0xffffff,
-    specular: 0xffffff,
-    reflectivity: 1000,
-    refractionRatio: 100,
+    // emissive: 0xffffff,
+    // specular: 0xffffff,
+    // reflectivity: 1000,
+    // refractionRatio: 100,
     opacity: 0.6,
     transparent: true,
-    shininess: 1000,
+    // shininess: 1000,
 
 });
 var sphere1 = new THREE.Mesh( new THREE.SphereGeometry(0.8, 32, 32), materialSphere1 );
@@ -132,8 +132,6 @@ sphere8.castShadow = true;
 sphere8.receiveShadow = true;
 sphere8.position.set(0, -1.5, 0);
 scene.add( sphere8 );
-
-
 
 
 // var spotLight = new THREE.SpotLight( 0xffffff );
