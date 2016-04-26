@@ -24,7 +24,8 @@ scene.add( table );
 
 
 var materialBox = new THREE.MeshPhongMaterial({
-    color: 0x441100
+    color: 0x441100,
+    map: textureLoader.load("textures/wood5.jpg")
 });
 var boxData = loader.parse(require('json!./models/box.json'), null);
 var box = new THREE.Mesh( boxData.geometry, materialBox );
@@ -33,7 +34,8 @@ box.castShadow = true;
 scene.add( box );
 
 var materialCover = new THREE.MeshPhongMaterial({
-    color: 0x441100
+    color: 0x441100,
+    map: textureLoader.load("textures/wood5.jpg")
 });
 var coverData = loader.parse(require('json!./models/cover.json'), null);
 var cover = new THREE.Mesh( coverData.geometry, materialCover );
@@ -50,7 +52,7 @@ var materialSphere1 = new THREE.MeshPhongMaterial({
     // specular: 0xffffff,
     // reflectivity: 1000,
     // refractionRatio: 100,
-    opacity: 0.6,
+    opacity: 0.4,
     transparent: true,
     // shininess: 1000,
 
